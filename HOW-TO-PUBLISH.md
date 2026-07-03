@@ -7,7 +7,7 @@ You have two identical files:
 
 Pick **one** route below. All three give you a private-by-default, HTTPS link.
 
-\--------
+\-----------------
 
 ## Privacy — read first (30 seconds)
 
