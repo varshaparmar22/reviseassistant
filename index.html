@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Revise Assistant — Study Deck</title>
+<meta name="description" content="A personal interview-revision deck — projects, services and Q&amp;A, one card each.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#080b14">
+<meta property="og:title" content="Revise Assistant — Study Deck">
+<meta property="og:description" content="Recall every project, service and interview answer, one card at a time.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e1a'/%3E%3Cg stroke='%2338e0c8' stroke-width='1.6'%3E%3Cline x1='8' y1='10' x2='16' y2='16'/%3E%3Cline x1='24' y1='9' x2='16' y2='16'/%3E%3Cline x1='10' y1='24' x2='16' y2='16'/%3E%3C/g%3E%3Cg fill='%234d8dff'%3E%3Ccircle cx='8' cy='10' r='2.4'/%3E%3Ccircle cx='24' cy='9' r='2.4'/%3E%3Ccircle cx='10' cy='24' r='2.4'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='3' fill='%2338e0c8'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#080b14; --bg2:#0d1220; --panel:#111829; --panel2:#0f1626;
+    --line:#1f2a42; --line2:#2a3854;
+    --ink:#e8edf7; --ink-soft:#9fb0cc; --ink-faint:#66789a;
+    --blue:#4d8dff; --teal:#38e0c8; --violet:#a78bfa; --amber:#f5b544;
+    --coral:#ff7a66; --green:#46d39a; --pink:#f06fae;
+    --known:#46d39a; --review:#f5b544;
+    --radius:16px; --radius-sm:10px;
+    --shadow:0 10px 40px -12px rgba(0,0,0,.7);
+    --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+    --disp:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -5%, rgba(77,141,255,.10), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(56,224,200,.08), transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:var(--body);
+    -webkit-font-smoothing:antialiased; line-height:1.5; min-height:100vh;
+  }
+  a{color:var(--teal)}
+  code{font-family:var(--mono); font-size:.86em; background:rgba(56,224,200,.10);
+    color:#bff1e8; padding:.06em .38em; border-radius:5px; border:1px solid rgba(56,224,200,.18)}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 clamp(14px,3vw,28px)}
+  header.top{position:relative; padding:clamp(20px,4vw,40px) 0 10px}
+  .brandline{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+  .mark{width:34px;height:34px;flex:0 0 auto;border-radius:9px;
+    background:linear-gradient(135deg,#0a0e1a,#152036);
+    border:1px solid var(--line2); position:relative; box-shadow:inset 0 0 20px rgba(56,224,200,.10)}
+  .mark::before,.mark::after{content:"";position:absolute;border-radius:50%}
+  .mark::before{width:7px;height:7px;background:var(--teal);top:13px;left:13px;box-shadow:0 0 10px var(--teal)}
+  .mark::after{width:4px;height:4px;background:var(--blue);top:8px;left:23px;
+    box-shadow:-13px 15px 0 var(--blue), 0 18px 0 rgba(167,139,250,.9)}
+  .brandline .who{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink-faint)}
+  h1{font-family:var(--disp); font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(1.9rem,5.4vw,3.1rem); line-height:1.02; margin:.1em 0 .35em}
+  h1 .g{background:linear-gradient(100deg,var(--teal),var(--blue) 60%,var(--violet));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  .sub{color:var(--ink-soft); max-width:64ch; font-size:clamp(.96rem,2.4vw,1.06rem)}
+  .sub b{color:var(--ink); font-weight:600}
+
+  .stats{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 6px}
+  .chip-stat{display:flex; flex-direction:column; gap:2px; padding:10px 15px;
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--line); border-radius:12px; min-width:92px}
+  .chip-stat .n{font-family:var(--disp); font-weight:700; font-size:1.3rem}
+  .chip-stat .l{font-family:var(--mono); font-size:.62rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ink-faint)}
+  .chip-stat.k .n{color:var(--known)} .chip-stat.r .n{color:var(--review)}
+
+  .controls{position:sticky; top:0; z-index:40; padding:10px 0 9px;
+    background:linear-gradient(180deg,var(--bg) 78%, rgba(8,11,20,.86)); backdrop-filter:blur(6px); }
+  .searchrow{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+  .search{flex:1 1 260px; display:flex; align-items:center; gap:9px;
+    background:var(--panel); border:1px solid var(--line2); border-radius:12px; padding:11px 14px}
+  .search:focus-within{border-color:var(--blue); box-shadow:0 0 0 3px rgba(77,141,255,.15)}
+  .search svg{flex:0 0 auto; opacity:.6}
+  .search input{flex:1; background:none; border:0; outline:0; color:var(--ink); font-family:var(--body); font-size:.98rem}
+  .search input::placeholder{color:var(--ink-faint)}
+  .modebtns{display:flex; gap:6px; background:var(--panel); border:1px solid var(--line2); border-radius:12px; padding:4px}
+  .modebtns button{font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-soft); background:none; border:0; padding:8px 12px; border-radius:9px; cursor:pointer}
+  .modebtns button.on{background:linear-gradient(135deg,var(--blue),#3b6fd6); color:#fff}
+  .filttoggle{display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:.72rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-soft); background:var(--panel); border:1px solid var(--line2);
+    padding:9px 13px; border-radius:12px; cursor:pointer}
+  .filttoggle.on{color:var(--ink); border-color:var(--blue)}
+  .filttoggle svg{opacity:.75}
+  .filttoggle .fcount{font-family:var(--mono); font-size:.62rem; background:var(--blue); color:#fff;
+    border-radius:20px; padding:1px 6px; min-width:16px; text-align:center}
+  .filttoggle .fcount:empty{display:none}
+
+  .filterblock{margin-top:10px}
+  .filterblock.hide{display:none}
+  .filterblock .flabel{font-family:var(--mono); font-size:.6rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-faint); margin:0 0 7px 2px}
+  .filters{display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    padding-bottom:3px; scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filt{flex:0 0 auto; font-family:var(--mono); font-size:.71rem; letter-spacing:.03em; color:var(--ink-soft);
+    background:var(--panel); border:1px solid var(--line); padding:7px 11px; border-radius:20px; cursor:pointer;
+    display:flex; align-items:center; gap:7px; transition:border-color .15s,color .15s,background .15s}
+  .filt .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--ink-faint))}
+  .filt .ct{color:var(--ink-faint); font-size:.66rem}
+  .filt.on{color:var(--ink); background:var(--panel2); border-color:var(--c,var(--line2)); box-shadow:0 0 0 1px var(--c,transparent) inset}
+  .filt:hover{color:var(--ink)}
+
+  .grid{display:grid; grid-template-columns:1fr; gap:14px; padding:18px 0 40px}
+  @media(min-width:720px){ .grid{grid-template-columns:1fr 1fr} }
+
+  .projhead{grid-column:1/-1; display:flex; align-items:center; gap:12px; margin:18px 2px 2px; padding-top:8px}
+  .projhead:first-child{margin-top:0}
+  .projhead .bar{height:20px; width:4px; border-radius:4px; background:var(--c,var(--blue))}
+  .projhead h2{font-family:var(--disp); font-weight:600; font-size:1.02rem; margin:0; color:var(--ink)}
+  .projhead .cnt{font-family:var(--mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint)}
+
+  .card{position:relative; background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; cursor:pointer;
+    transition:border-color .18s, transform .18s; text-align:left; display:flex; flex-direction:column}
+  .card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--c,var(--blue))}
+  .card:hover{border-color:var(--line2); transform:translateY(-2px)}
+  .card.known{border-color:rgba(70,211,154,.4)} .card.known::before{background:var(--known)}
+  .card.rev{border-color:rgba(245,181,68,.4)}
+  .card .pad{padding:15px 18px 15px 20px}
+  .card .catrow{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px}
+  .badges{display:flex; align-items:center; gap:7px; flex-wrap:wrap}
+  .cat{font-family:var(--mono); font-size:.61rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cc,var(--blue)); font-weight:600}
+  .pbadge{font-family:var(--mono); font-size:.58rem; letter-spacing:.06em; color:#cdd8ee;
+    background:rgba(255,255,255,.04); border:1px solid var(--c,var(--line2)); padding:2px 7px; border-radius:20px}
+  .stateflag{font-family:var(--mono); font-size:.57rem; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:20px; border:1px solid transparent}
+  .stateflag.known{color:var(--known); border-color:rgba(70,211,154,.35); background:rgba(70,211,154,.08)}
+  .stateflag.rev{color:var(--review); border-color:rgba(245,181,68,.35); background:rgba(245,181,68,.08)}
+  .card .q{display:block; font-family:var(--disp); font-weight:600; font-size:1.02rem; line-height:1.28; color:var(--ink)}
+  .aka{display:flex; flex-wrap:wrap; gap:6px; margin-top:11px}
+  .aka .lbl{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); width:100%; margin-bottom:-3px}
+  .aka span.t{font-family:var(--mono); font-size:.67rem; color:#cdd8ee; background:rgba(255,255,255,.035);
+    border:1px solid var(--line2); padding:3px 8px; border-radius:6px}
+  .answer{max-height:0; overflow:hidden; transition:max-height .3s ease; border-top:1px solid transparent}
+  .card.open .answer{max-height:1800px; border-top-color:var(--line)}
+  .answer .inner{padding:15px 18px 4px 20px; color:var(--ink-soft); font-size:.93rem}
+  .answer .inner :first-child{margin-top:0}
+  .answer .inner p{margin:.5em 0}
+  .answer .inner ul{margin:.5em 0; padding-left:1.15em} .answer .inner li{margin:.32em 0}
+  .answer .inner strong{color:var(--ink); font-weight:600}
+  .answer .inner .hl{color:var(--teal); font-weight:600}
+  .tapcue{font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);
+    margin-top:12px; display:flex; align-items:center; gap:6px}
+  .card.open .tapcue{color:var(--cc,var(--blue))}
+  .tapcue svg{transition:transform .25s} .card.open .tapcue svg{transform:rotate(180deg)}
+  .rate{display:flex; gap:8px; padding:10px 18px 16px 20px}
+  .rate button{flex:1; font-family:var(--mono); font-size:.67rem; letter-spacing:.05em; text-transform:uppercase;
+    padding:9px; border-radius:9px; cursor:pointer; border:1px solid var(--line2); background:var(--panel); color:var(--ink-soft); transition:.15s}
+  .rate button:hover{color:var(--ink)}
+  .rate button.pk-k.act{background:rgba(70,211,154,.14); border-color:var(--known); color:var(--known)}
+  .rate button.pk-r.act{background:rgba(245,181,68,.14); border-color:var(--review); color:var(--review)}
+
+  .flashwrap{padding:22px 0 40px; display:none} .flashwrap.on{display:block}
+  .progline{height:6px; background:var(--panel); border-radius:20px; overflow:hidden; margin-bottom:8px}
+  .progline i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--teal),var(--blue)); transition:width .3s}
+  .progmeta{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.66rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:20px}
+  .flashcard{background:linear-gradient(180deg,var(--panel),var(--panel2)); border:1px solid var(--line2); border-radius:20px;
+    padding:clamp(22px,5vw,40px); min-height:340px; display:flex; flex-direction:column; position:relative; box-shadow:var(--shadow)}
+  .flashcard::before{content:""; position:absolute; left:0; top:22px; bottom:22px; width:4px; border-radius:4px; background:var(--c,var(--blue))}
+  .flashcard .cat{font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px; font-weight:600}
+  .flashcard .pline{font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:16px}
+  .flashcard .q{font-family:var(--disp); font-weight:600; font-size:clamp(1.2rem,3.6vw,1.7rem); line-height:1.24; color:var(--ink)}
+  .flashcard .fa{margin-top:20px; color:var(--ink-soft); font-size:1rem; display:none; animation:fade .25s ease}
+  .flashcard.reveal .fa{display:block}
+  .flashcard .fa ul{padding-left:1.15em} .flashcard .fa li{margin:.4em 0}
+  .flashcard .fa strong{color:var(--ink)} .flashcard .fa .hl{color:var(--teal);font-weight:600}
+  .flashcard .aka{margin-top:16px}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .flashcard .spacer{flex:1; min-height:14px}
+  .revealbtn{margin-top:18px; align-self:flex-start; font-family:var(--mono); font-size:.74rem; letter-spacing:.08em;
+    text-transform:uppercase; color:#fff; cursor:pointer; background:linear-gradient(135deg,var(--blue),#3b6fd6); border:0; padding:12px 20px; border-radius:11px}
+  .flashcard.reveal .revealbtn{display:none}
+  .flashnav{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap}
+  .flashnav button{font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:12px 16px;
+    border-radius:11px; cursor:pointer; border:1px solid var(--line2); background:var(--panel); color:var(--ink-soft); transition:.15s}
+  .flashnav button:hover{color:var(--ink)}
+  .flashnav .nav-k{flex:1; color:var(--known); border-color:rgba(70,211,154,.4)} .flashnav .nav-k:hover{background:rgba(70,211,154,.12)}
+  .flashnav .nav-r{flex:1; color:var(--review); border-color:rgba(245,181,68,.4)} .flashnav .nav-r:hover{background:rgba(245,181,68,.12)}
+  .flashnav .nav-skip{flex:1}
+  .toolbar{display:flex; gap:8px; justify-content:flex-end; margin-bottom:14px; flex-wrap:wrap}
+  .toolbar button{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+    background:var(--panel); border:1px solid var(--line); padding:8px 13px; border-radius:9px; cursor:pointer; display:flex; align-items:center; gap:6px}
+  .toolbar button:hover{color:var(--ink); border-color:var(--line2)}
+  .empty{text-align:center; color:var(--ink-faint); padding:60px 20px; font-family:var(--mono); font-size:.85rem; grid-column:1/-1}
+  footer{border-top:1px solid var(--line); padding:26px 0 40px; color:var(--ink-faint); font-size:.82rem;
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
+  footer .mono{font-family:var(--mono); font-size:.72rem; letter-spacing:.05em}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--line2); border-radius:10px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  #gate{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:radial-gradient(1000px 600px at 50% -10%,rgba(77,141,255,.12),transparent 60%),var(--bg);padding:24px}
+  #gate.on{display:flex}
+  #gate .box{max-width:380px;width:100%;text-align:center}
+  #gate .mark2{width:40px;height:40px;margin:0 auto 18px;border-radius:10px;
+    background:linear-gradient(135deg,#0a0e1a,#152036);border:1px solid var(--line2);position:relative;box-shadow:inset 0 0 20px rgba(56,224,200,.10)}
+  #gate .mark2::before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--teal);top:16px;left:16px;box-shadow:0 0 10px var(--teal)}
+  #gate h2{font-family:var(--disp);font-weight:600;font-size:1.3rem;margin:0 0 6px}
+  #gate p{color:var(--ink-soft);font-size:.9rem;margin:0 0 18px}
+  #gate input{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:11px;padding:13px 15px;
+    color:var(--ink);font-family:var(--body);font-size:1rem;outline:none;text-align:center}
+  #gate input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(77,141,255,.15)}
+  #gate button{margin-top:12px;width:100%;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+    color:#fff;background:linear-gradient(135deg,var(--blue),#3b6fd6);border:0;padding:13px;border-radius:11px;cursor:pointer}
+  #gate .err{color:var(--coral);font-size:.8rem;min-height:1.2em;margin-top:10px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div id="gate" aria-hidden="true">
+  <div class="box">
+    <div class="mark2"></div>
+    <h2>Revise Assistant</h2>
+    <p>Enter the passphrase to open your deck.</p>
+    <input id="gateInput" type="password" placeholder="Passphrase" autocomplete="off">
+    <button id="gateBtn">Unlock</button>
+    <div class="err" id="gateErr"></div>
+  </div>
+</div>
+<div class="wrap">
+  <header class="top">
+    <div class="brandline"><span class="mark"></span><span class="who">Revise Assistant · Interview Recall Deck</span></div>
+    <h1>One project at a time, <span class="g">part by part</span>.</h1>
+    <p class="sub">Your night-before-interview deck, <b>Varsha</b>. Each project is broken into small cards — <b>one card per service or feature</b> you used, with what it is, why you chose it there, the hard bit you solved, and what else it's called. The <b>full project overview sits on the last card of each project</b>. Then come skills, interview questions and a vocabulary set. Tap to reveal; mark <b>Known</b> or <b>Review</b> — progress saves on this device.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="controls">
+    <div class="searchrow">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Search: Stripe, LangGraph, reranker, 'why Postgres queue'…" autocomplete="off">
+      </label>
+      <div class="modebtns" role="tablist" aria-label="Study mode">
+        <button id="mBrowse" class="on" role="tab">Browse</button>
+        <button id="mFlash" role="tab">Flashcards</button>
+      </div>
+      <button id="filterToggle" class="filttoggle" aria-expanded="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+        Filters<span class="fcount"></span>
+      </button>
+    </div>
+    <div class="filterblock"><p class="flabel">Filter by type</p><div class="filters" id="typeFilters"></div></div>
+    <div class="filterblock"><p class="flabel">Filter by project</p><div class="filters" id="projFilters"></div></div>
+  </div>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+
+  <section class="flashwrap" id="flashwrap" aria-hidden="true">
+    <div class="toolbar">
+      <button id="shuffle">⤨ Shuffle</button>
+      <button id="reviewOnly">◐ Review pile</button>
+    </div>
+    <div class="progline"><i id="progbar"></i></div>
+    <div class="progmeta"><span id="progpos">Card 1</span><span id="progcat">—</span></div>
+    <div class="flashcard" id="flashcard">
+      <div class="cat" id="fcat">—</div>
+      <div class="pline" id="fpline"></div>
+      <div class="q" id="fq">—</div>
+      <div class="fa" id="fa"></div>
+      <div class="spacer"></div>
+      <button class="revealbtn" id="revealbtn">Show answer</button>
+    </div>
+    <div class="flashnav">
+      <button class="nav-r" id="navReview">↺ Review</button>
+      <button class="nav-skip" id="navSkip">Skip →</button>
+      <button class="nav-k" id="navKnown">✓ Known</button>
+    </div>
+  </section>
+
+  <footer>
+    <span>Built from your résumé, 8 case studies &amp; live 2026 interview trends.</span>
+    <span class="mono" id="foot">—</span>
+  </footer>
+</div>
+
+<script>
+/* ---- projects (order = display order; colour = accent) ---- */
+const PROJ = {
+  mm:  {name:'MeetingMind AI',            short:'MeetingMind',      c:'#4d8dff'},
+  wa:  {name:'WhatsApp Healthcare Assistant', short:'WhatsApp Health', c:'#46d39a'},
+  srag:{name:'Serverless RAG Chatbot',    short:'Serverless RAG',   c:'#38e0c8'},
+  frag:{name:'Financial RAG System',      short:'Financial RAG',    c:'#a78bfa'},
+  notes:{name:'Serverless Notes App',     short:'Notes App',        c:'#f5b544'},
+  cicd:{name:'Static Site CI/CD',         short:'Static CI/CD',     c:'#ff7a66'},
+  wm:  {name:'WorkMail Signature Automation', short:'WorkMail',     c:'#f06fae'},
+  air: {name:'Airtable Contractor System',short:'Airtable',         c:'#5bd0e6'},
+  doc: {name:'AWS Document Pipeline',      short:'Doc Pipeline',     c:'#c3d84a'},
+  anes:{name:'Anesthetic Recommender',    short:'Anesthetic AI',    c:'#ff9f6b'},
+  gmail:{name:'Gmail Assistant Extension',short:'Gmail Ext',        c:'#e0728f'},
+};
+const CAT = {
+  feature:   {name:'Service / Feature',        c:'#38e0c8'},
+  skill:     {name:'Skill Stack',              c:'#a78bfa'},
+  behavioral:{name:'Interview · About You',    c:'#f5b544'},
+  drill:     {name:'Interview · Project Drill',c:'#ff7a66'},
+  technical: {name:'Interview · Technical',    c:'#46d39a'},
+  vocab:     {name:'Vocabulary Boost',         c:'#f06fae'},
+  project:   {name:'Full Project Overview',    c:'#4d8dff'},
+};
+
+/* helper to keep data terse */
+const F=(proj,q,aka,a)=>({cat:'feature',proj,q,aka,a});
+
+const CARDS = [
+/* =========================================================
+   1) MEETINGMIND AI — feature by feature
+   ========================================================= */
+F('mm','Async FastAPI backend (/api/v1)',
+ ['REST API layer','Application server','Web framework','ASGI backend'],
+ `<p><strong>What:</strong> an async <strong>FastAPI</strong> service with versioned <code>/api/v1</code> routes for auth, workspaces, members, meetings and billing, served by Uvicorn.</p>
+  <p><strong>Why here:</strong> async I/O suits a system that waits on transcription + LLM calls; versioning keeps the API stable as it evolves.</p>`),
+F('mm','Redis-free job queue on PostgreSQL',
+ ['Background worker','Polling worker','Async task queue','Producer–consumer'],
+ `<p><strong>What:</strong> an <code>async_jobs</code> table; a worker polls every ~5s, marks jobs running, records failure states — no Redis/Celery/SQS.</p>
+  <p><strong>Why here:</strong> fewer moving parts and lower cost while keeping durability and retries. <span class="hl">Hard bit:</span> building reliable async processing on plain Postgres.</p>`),
+F('mm','Pluggable LLM layer (BaseLLMProvider + LLMFactory)',
+ ['Factory + Strategy pattern','Provider abstraction','Model gateway','Pluggable engine'],
+ `<p><strong>What:</strong> one interface returning Ollama, Claude, GPT-4 or Bedrock, switchable per environment with <span class="hl">zero code changes</span>.</p>
+  <p><strong>Why here:</strong> free local dev (Ollama), high-quality prod (Claude/Bedrock), graceful fallback. Name the pattern: <strong>Factory + Strategy</strong>.</p>`),
+F('mm','Switchable transcription (Whisper ↔ AWS Transcribe)',
+ ['Factory Method','STT engine','ASR','Swappable backend'],
+ `<p><strong>What:</strong> a factory picks Whisper (local) or AWS Transcribe (prod, speaker labels) from one flag <code>TRANSCRIPTION_SERVICE</code>.</p>
+  <p><strong>Why here:</strong> cheap testing, high-quality cloud transcription in prod, identical calling code. Speaker labelling = <span class="hl">diarization</span>.</p>`),
+F('mm','SHA256 transcript cache',
+ ['Content-addressed cache','Memoization','Deduplication','Caching layer'],
+ `<p><strong>What:</strong> hash the audio; if seen before, reuse the transcript instead of re-paying (~20–30% savings).</p>
+  <p><strong>Why here:</strong> transcription is the costliest step; identical audio shouldn't cost twice.</p>`),
+F('mm','Stripe billing (checkout, portal, webhooks)',
+ ['Payment integration','Usage metering','Monetization layer','Subscription management'],
+ `<p><strong>What:</strong> Stripe Checkout + Customer Portal, signature-verified webhooks syncing a <code>subscriptions</code> table, USD/INR pricing, <strong>HTTP 402</strong> on plan overage.</p>
+  <p><strong>Why here:</strong> it's a real billable SaaS. <span class="hl">Hard bit:</span> India RBI e-mandate handling for recurring INR, verified on a live test account.</p>`),
+F('mm','Multi-tenancy + workspace RBAC',
+ ['Tenant isolation','Access control','Authorization','Workspace scoping'],
+ `<p><strong>What:</strong> workspace-scoped data via an <code>X-Workspace-ID</code> header; owner/admin/member roles; the last owner can't be removed.</p>
+  <p><strong>Why here:</strong> many teams share one deployment safely; each tenant's data stays isolated. RBAC = role-based access control.</p>`),
+F('mm','JWT auth (access + refresh tokens)',
+ ['Token-based auth','Stateless auth','Session-less identity'],
+ `<p><strong>What:</strong> signed JWTs via python-jose + bcrypt password hashing; short-lived access + refresh tokens.</p>
+  <p><strong>Why here:</strong> stateless auth that scales without a server-side session store.</p>`),
+F('mm','SQLAlchemy 2.0 + Alembic data layer',
+ ['ORM','Schema migrations','Data-access layer','Repository pattern'],
+ `<p><strong>What:</strong> SQLAlchemy 2.0 models over PostgreSQL 16 with Alembic migrations and clean repositories.</p>
+  <p><strong>Why here:</strong> type-safe queries, versioned schema changes, and a tidy service/data boundary.</p>`),
+F('mm','S3 object storage (audio/video) + local fallback',
+ ['Object storage','Blob store','Media store'],
+ `<p><strong>What:</strong> uploads land in AWS <strong>S3</strong>, with a disk-backed local-storage fallback for dev.</p>
+  <p><strong>Why here:</strong> durable, cheap media storage in prod; no cloud dependency while developing.</p>`),
+F('mm','Next.js / React frontend',
+ ['SPA','Client app','State management','Type-safe UI'],
+ `<p><strong>What:</strong> Next.js + React, Tailwind, React Query (server state), Zustand (client state), react-hook-form + Zod, TypeScript.</p>
+  <p><strong>Why here:</strong> a modern, typed, responsive dashboard for upload, meetings and workspace management.</p>`),
+F('mm','Docker + GitHub Actions CI/CD',
+ ['Containerization','Delivery pipeline','GitOps deploy','Continuous deployment'],
+ `<p><strong>What:</strong> a lean <code>python:3.12-slim</code> image, Docker Compose, and a 4-stage GitHub Actions pipeline: lint → test → ECR push → EC2 deploy (with RDS).</p>
+  <p><strong>Why here:</strong> reproducible builds and hands-off deploys — production discipline from day one.</p>`),
+F('mm','Rate limiting (slowapi) + 90-test Pytest suite',
+ ['Throttling','Quality gates','Test coverage','Abuse protection'],
+ `<p><strong>What:</strong> per-endpoint rate limiting via slowapi and a 90-test Pytest suite.</p>
+  <p><strong>Why here:</strong> protect the API from abuse and catch regressions before they ship — the "boring" parts that make AI reliable.</p>`),
+
+/* =========================================================
+   2) WHATSAPP HEALTHCARE ASSISTANT
+   ========================================================= */
+F('wa','Stateless AWS Lambda message handler',
+ ['Serverless compute','FaaS','Event handler','Scale-to-zero backend'],
+ `<p><strong>What:</strong> each incoming WhatsApp message triggers an independent, stateless Lambda invocation.</p>
+  <p><strong>Why here:</strong> pay-per-message, auto-scales to many concurrent patients, no servers to run.</p>`),
+F('wa','DynamoDB conversation state + TTL',
+ ['Session store','Context store','State management','Ephemeral store'],
+ `<p><strong>What:</strong> conversation context (intent, step, language) stored in DynamoDB; each Lambda reads then updates it; TTL auto-expires idle sessions.</p>
+  <p><strong>Why here:</strong> <span class="hl">stateless compute needs external state</span> to run multi-step flows without server sessions.</p>`),
+F('wa','LangGraph agent routing',
+ ['Agent orchestration','Intent router / classifier','Decision graph','State machine'],
+ `<p><strong>What:</strong> LangGraph decides intent (appointment / report / medical Q&amp;A / escalate) using <strong>deterministic keyword routing with an LLM fallback</strong>.</p>
+  <p><strong>Why here:</strong> safe, auditable routing in healthcare — the LLM only helps at ambiguous edges, not on critical paths.</p>`),
+F('wa','RAG-based medical Q&A',
+ ['Retrieval-augmented generation','Grounded answers','Knowledge lookup'],
+ `<p><strong>What:</strong> answers are grounded in retrieved context rather than the model's memory.</p>
+  <p><strong>Why here:</strong> reduces hallucination and keeps medical answers traceable and safer.</p>`),
+F('wa','Sandboxed document processing',
+ ['Isolated execution','Separation of duties','Least-privilege processing'],
+ `<p><strong>What:</strong> reports are processed in a separate, isolated Lambda; the raw file never reaches the LLM — only <strong>sanitised extracted text</strong> does.</p>
+  <p><strong>Why here:</strong> privacy and safety for sensitive health data; chat-handling and doc-processing are cleanly separated.</p>`),
+F('wa','WhatsApp Business API integration',
+ ['Messaging channel','Conversational interface','Chat channel'],
+ `<p><strong>What:</strong> 1-to-1 patient communication over the WhatsApp Business API.</p>
+  <p><strong>Why here:</strong> patients get help with <span class="hl">no app install</span> on a platform they already use.</p>`),
+F('wa','Multilingual deterministic templates (EN / Gujarati)',
+ ['Localization','i18n','Template engine','Response templating'],
+ `<p><strong>What:</strong> a template system gives consistent English and Gujarati replies.</p>
+  <p><strong>Why here:</strong> deterministic wording keeps healthcare responses predictable and safe across languages.</p>`),
+F('wa','Event-driven async workflows',
+ ['Event-driven architecture','Async processing','Non-blocking flow'],
+ `<p><strong>What:</strong> long tasks (report processing) run as event-driven updates with user notifications.</p>
+  <p><strong>Why here:</strong> the user isn't blocked while a slow task runs in the background.</p>`),
+F('wa','Idempotent processing + FAILED states',
+ ['Idempotency','Fault tolerance','Graceful degradation','At-least-once safety'],
+ `<p><strong>What:</strong> processing is idempotent (no duplicate bookings) with explicit FAILED-state handling.</p>
+  <p><strong>Why here:</strong> webhooks can retry/duplicate; idempotency makes reruns safe.</p>`),
+
+/* =========================================================
+   3) SERVERLESS RAG CHATBOT
+   ========================================================= */
+F('srag','AWS Bedrock foundation models',
+ ['Managed LLM','Inference service','GenAI service'],
+ `<p><strong>What:</strong> Bedrock provides both the embedding model and the response-generation LLM.</p>
+  <p><strong>Why here:</strong> managed, secure inference with no model hosting to run yourself.</p>`),
+F('srag','Pinecone vector search',
+ ['Semantic index','Embedding store','ANN index','Vector DB'],
+ `<p><strong>What:</strong> stores document embeddings and returns the most similar chunks for a query.</p>
+  <p><strong>Why here:</strong> fully managed, scales easily — retrieval that grounds answers in the right documents.</p>`),
+F('srag','Ingestion → chunking → embeddings pipeline',
+ ['Indexing pipeline','ETL','Preprocessing','Document processing'],
+ `<p><strong>What:</strong> upload → text extraction → intelligent chunking → Bedrock embeddings → index in Pinecone.</p>
+  <p><strong>Why here:</strong> good chunking + embeddings decide retrieval quality more than the LLM does.</p>`),
+F('srag','Cognito authentication',
+ ['Identity provider (IdP)','Token-based auth','User pool','RBAC'],
+ `<p><strong>What:</strong> email/password auth with JWT sessions and role-based access.</p>
+  <p><strong>Why here:</strong> offload secure auth to a managed, MFA-ready service.</p>`),
+F('srag','API Gateway (validation + throttling)',
+ ['API layer','Front door','Request router','Reverse proxy (loosely)'],
+ `<p><strong>What:</strong> scalable REST APIs with request validation and throttling in front of Lambda.</p>
+  <p><strong>Why here:</strong> a controlled, rate-limited entry point that validates tokens before compute runs.</p>`),
+F('srag','Lambda backend (chat + doc processing)',
+ ['Serverless compute','Event-driven backend','FaaS'],
+ `<p><strong>What:</strong> event-driven functions handle query processing, semantic search and response generation.</p>
+  <p><strong>Why here:</strong> pay-per-use compute that scales with traffic spikes automatically.</p>`),
+F('srag','S3 + CloudFront frontend (PWA)',
+ ['Static hosting','CDN','Edge delivery','JAMstack'],
+ `<p><strong>What:</strong> a responsive, PWA-capable UI served globally from S3 behind CloudFront over HTTPS.</p>
+  <p><strong>Why here:</strong> fast, cheap, globally distributed frontend delivery.</p>`),
+F('srag','AWS Secrets Manager',
+ ['Secrets management','Credential vault','Key storage'],
+ `<p><strong>What:</strong> securely stores API keys and credentials (e.g. Pinecone) — no hardcoding.</p>
+  <p><strong>Why here:</strong> keeps secrets out of code and IAM-controlled.</p>`),
+F('srag','Terraform (remote state + DynamoDB lock)',
+ ['IaC','Provisioning','Declarative infra'],
+ `<p><strong>What:</strong> the whole stack deploys with <code>terraform apply</code>; remote state in S3 with DynamoDB locking; modular, dev/prod parity.</p>
+  <p><strong>Why here:</strong> reproducible, reviewable infrastructure — no click-ops.</p>`),
+F('srag','Multi-turn conversation history',
+ ['Context management','Chat memory','Dialogue state'],
+ `<p><strong>What:</strong> keeps chat history so follow-up questions stay coherent.</p>
+  <p><strong>Why here:</strong> real assistants need memory across turns, not one-shot answers.</p>`),
+
+/* =========================================================
+   4) FINANCIAL RAG SYSTEM
+   ========================================================= */
+F('frag','LangChain orchestration',
+ ['LLM framework','Pipeline orchestration','Chain composition'],
+ `<p><strong>What:</strong> LangChain wires together loaders, splitters, retrievers, rerankers and the LLM.</p>
+  <p><strong>Why here:</strong> composable building blocks let you swap retrievers and measure each change.</p>`),
+F('frag','Qdrant Cloud (HNSW index)',
+ ['Vector DB','ANN index','Semantic store'],
+ `<p><strong>What:</strong> scalable cloud vector search with HNSW indexing (migrated from Chroma).</p>
+  <p><strong>Why here:</strong> needed scale for ~150K chunks. <span class="hl">Hard bit:</span> fixed read-timeouts with <strong>batch insertions</strong> instead of one-by-one writes.</p>`),
+F('frag','OpenAI embeddings (3072 → 1536 dims)',
+ ['Dimensionality reduction','Embedding optimization','Vector compression'],
+ `<p><strong>What:</strong> <code>text-embedding-3-large</code> reduced from 3072 to 1536 dimensions.</p>
+  <p><strong>Why here:</strong> ~half the vector size gave <span class="hl">2× faster retrieval</span> and lower storage cost, accuracy still validated.</p>`),
+F('frag','RecursiveCharacterTextSplitter chunking',
+ ['Text segmentation','Document splitting','Context windowing'],
+ `<p><strong>What:</strong> token-aware recursive splitting balances context length against embedding cost.</p>
+  <p><strong>Why here:</strong> chunk size drives retrieval quality — too big is noisy, too small loses meaning.</p>`),
+F('frag','MultiQueryRetriever',
+ ['Query expansion','Query rewriting','Multi-query retrieval'],
+ `<p><strong>What:</strong> generates ~5 paraphrased variants of each question for richer recall.</p>
+  <p><strong>Why here:</strong> a single phrasing misses relevant chunks; multiple phrasings catch more.</p>`),
+F('frag','Cohere reranker',
+ ['Reranking','Cross-encoder re-scoring','Relevance re-ranking'],
+ `<p><strong>What:</strong> re-scores retrieved candidates so the most relevant chunks reach the context window.</p>
+  <p><strong>Why here:</strong> MultiQuery + rerank together lifted retrieval accuracy <span class="hl">+40%</span>.</p>`),
+F('frag','RAGAS evaluation',
+ ['RAG eval harness','Quality metrics','Faithfulness scoring'],
+ `<p><strong>What:</strong> automated scoring on faithfulness, context recall and relevance, plus human spot-checks.</p>
+  <p><strong>Why here:</strong> turns "looks good" into numbers you can track and defend in an interview.</p>`),
+F('frag','Streamlit dashboard with citations',
+ ['Data app','Explainable UI','Rapid-prototype frontend'],
+ `<p><strong>What:</strong> a Q&amp;A panel showing answers with reference chunks and source URLs.</p>
+  <p><strong>Why here:</strong> analysts need to trace every answer back to its source document.</p>`),
+F('frag','Multilingual support (EN / DE / FR / IT)',
+ ['Localization','Cross-lingual retrieval'],
+ `<p><strong>What:</strong> handles questions and content across four languages.</p>
+  <p><strong>Why here:</strong> financial reports and users aren't English-only.</p>`),
+
+/* =========================================================
+   5) SERVERLESS NOTES APP
+   ========================================================= */
+F('notes','S3 + CloudFront static SPA',
+ ['Static hosting','CDN','JAMstack','Edge delivery'],
+ `<p><strong>What:</strong> a single-page app (HTML/CSS/JS) served from S3 via CloudFront for HTTPS + caching.</p>
+  <p><strong>Why here:</strong> near-zero-ops, fast global delivery of the UI.</p>`),
+F('notes','API Gateway REST API',
+ ['API layer','Request router','REST endpoint'],
+ `<p><strong>What:</strong> the <code>Notes-Rest-Api</code> validates tokens then proxies to Lambda.</p>
+  <p><strong>Why here:</strong> a managed, scalable API front door with auth built in.</p>`),
+F('notes','Lambda CRUD backend + auth callback',
+ ['Serverless compute','CRUD API','Proxy integration'],
+ `<p><strong>What:</strong> <code>notes-api</code> handles CRUD; <code>authorize-cognito-notes-app</code> handles the <code>/auth/callback</code>.</p>
+  <p><strong>Why here:</strong> pay-per-use business logic with near-zero idle cost.</p>`),
+F('notes','Cognito user pool',
+ ['Identity provider','Token-based auth','Auth service'],
+ `<p><strong>What:</strong> sign-up, sign-in, password reset, and JWT issuance.</p>
+  <p><strong>Why here:</strong> secure, MFA-ready auth without building it yourself.</p>`),
+F('notes','DynamoDB (userId + noteId key)',
+ ['NoSQL','Partition + sort key','Per-user isolation'],
+ `<p><strong>What:</strong> <code>NotesTable-App</code> with composite key <code>(userId, noteId)</code>.</p>
+  <p><strong>Why here:</strong> the partition key isolates each user's data and enables fast per-user queries; p95 latency &lt; 150 ms.</p>`),
+F('notes','Least-privilege IAM + CORS + sanitization',
+ ['Security hardening','Input validation','Scoped permissions'],
+ `<p><strong>What:</strong> fine-grained IAM roles, CORS, and input sanitization.</p>
+  <p><strong>Why here:</strong> secure defaults on a public app — small blast radius if anything is compromised.</p>`),
+
+/* =========================================================
+   6) STATIC SITE CI/CD
+   ========================================================= */
+F('cicd','CodePipeline (GitHub → S3)',
+ ['CI/CD pipeline','Continuous deployment','Delivery automation'],
+ `<p><strong>What:</strong> every push to <code>main</code> auto-builds and deploys files to S3.</p>
+  <p><strong>Why here:</strong> zero manual steps — commit and the live site updates.</p>`),
+F('cicd','CodeStar Connections (secret-free Git)',
+ ['OAuth git integration','Secret-free deploy','Managed connection'],
+ `<p><strong>What:</strong> connects GitHub without exposing credentials.</p>
+  <p><strong>Why here:</strong> secure integration with no secrets in the pipeline.</p>`),
+F('cicd','EventBridge → Lambda cache invalidation',
+ ['Event bus','Event-driven trigger','Pub/sub'],
+ `<p><strong>What:</strong> an EventBridge rule catches CodePipeline <code>SUCCEEDED</code> and fires a Lambda that invalidates CloudFront.</p>
+  <p><strong>Why here:</strong> <span class="hl">Hard bit:</span> CDNs serve stale files after deploys — this auto-refreshes so users instantly see new content.</p>`),
+F('cicd','CloudFront CDN',
+ ['Edge caching','Global delivery','HTTPS layer'],
+ `<p><strong>What:</strong> caches assets at edge locations worldwide over HTTPS.</p>
+  <p><strong>Why here:</strong> low-latency global delivery; deploy latency under a minute.</p>`),
+F('cicd','API Gateway + Lambda + SES contact form',
+ ['Serverless email','Transactional mail','Contact endpoint'],
+ `<p><strong>What:</strong> the static site sends email via API Gateway → Lambda → SES.</p>
+  <p><strong>Why here:</strong> a purely static S3 site can still email the owner — no backend server needed.</p>`),
+F('cicd','AWS Free Tier cost design',
+ ['Cost optimization','Zero-cost hosting'],
+ `<p><strong>What:</strong> the whole pipeline runs within the AWS Free Tier.</p>
+  <p><strong>Why here:</strong> 100% automated hosting at effectively no cost.</p>`),
+
+/* =========================================================
+   7) WORKMAIL SIGNATURE AUTOMATION
+   ========================================================= */
+F('wm','WorkMail email flow rules',
+ ['Email interception','Message-flow hook','Mail middleware'],
+ `<p><strong>What:</strong> intercepts outgoing emails in real time to inject signatures.</p>
+  <p><strong>Why here:</strong> consistent branding + compliance with zero user effort.</p>`),
+F('wm','Lambda (Message Flow API, Python 3.11)',
+ ['Serverless email processor','Event-driven function'],
+ `<p><strong>What:</strong> retrieves raw mail via the WorkMail Message Flow API, appends the signature, writes it back.</p>
+  <p><strong>Why here:</strong> fully managed, auto-scaling processing with graceful failure (mail still sends if logic errors).</p>`),
+F('wm','S3 signature templates (department-wise)',
+ ['Template store','Config store','Content repository'],
+ `<p><strong>What:</strong> Support/Sales/Legal/Default signature templates stored in S3.</p>
+  <p><strong>Why here:</strong> update signatures without redeploying Lambda.</p>`),
+F('wm','Multipart HTML + plain-text handling',
+ ['MIME handling','Email parsing','Content-type handling'],
+ `<p><strong>What:</strong> correctly rewrites both HTML and plain-text parts of an email.</p>
+  <p><strong>Why here:</strong> <span class="hl">Hard bit:</span> multipart emails break naive text injection — proper MIME handling is essential.</p>`),
+F('wm','IAM least-privilege + HTTPS-only S3',
+ ['Security','Scoped permissions','Bucket policy'],
+ `<p><strong>What:</strong> tightly scoped IAM and an HTTPS-only S3 bucket policy; no hardcoded secrets.</p>
+  <p><strong>Why here:</strong> secure access to templates with minimal permissions.</p>`),
+F('wm','Terraform packaging (archive provider)',
+ ['IaC','Automated packaging','Repeatable envs'],
+ `<p><strong>What:</strong> Lambda, IAM, S3 and CloudWatch provisioned via Terraform; the Lambda ZIP is built by the archive provider.</p>
+  <p><strong>Why here:</strong> one-command, version-controlled, repeatable dev/prod setup.</p>`),
+F('wm','CloudWatch logging',
+ ['Observability','Monitoring','Log retention'],
+ `<p><strong>What:</strong> execution logs with cost-efficient retention.</p>
+  <p><strong>Why here:</strong> debug and monitor the email pipeline in production.</p>`),
+
+/* =========================================================
+   8) AIRTABLE CONTRACTOR SYSTEM
+   ========================================================= */
+F('air','Multi-table relational schema',
+ ['Data modeling','Normalization','Linked tables'],
+ `<p><strong>What:</strong> a parent Applicants table linked to Personal Details, Work Experience, Salary Preferences (1:1 and 1:N), plus an auto-generated Shortlisted Leads table.</p>
+  <p><strong>Why here:</strong> normalized structure that stays scalable inside Airtable.</p>`),
+F('air','Compression script (→ JSON)',
+ ['Serialization','ETL','Denormalization'],
+ `<p><strong>What:</strong> fetches all linked data and writes one compressed JSON payload to the parent record.</p>
+  <p><strong>Why here:</strong> fewer API calls, faster syncing, a lighter database structure.</p>`),
+F('air','Decompression script (→ tables)',
+ ['Deserialization','Data restore','Normalization'],
+ `<p><strong>What:</strong> reads the JSON and restores it into the normalized tables for easy editing.</p>
+  <p><strong>Why here:</strong> keep the compact storage <em>and</em> human-editable tables.</p>`),
+F('air','Smart shortlisting rules engine',
+ ['Business-logic filter','Deterministic gating','Multi-factor scoring'],
+ `<p><strong>What:</strong> auto-shortlists on experience (≥4 yrs or Tier-1), rate (≤ $100/hr), availability (≥ 20 hrs/wk) and location.</p>
+  <p><strong>Why here:</strong> consistent, instant screening — qualified candidates flow into Shortlisted Leads with reasoning.</p>`),
+F('air','LLM evaluator / enrichment',
+ ['AI scoring','Enrichment pipeline','LLM-as-judge (loosely)'],
+ `<p><strong>What:</strong> the LLM writes a 75-word summary, a 1–10 quality score, gap detection and 3 follow-up questions, written back to Airtable.</p>
+  <p><strong>Why here:</strong> AI-assisted screening inside the recruiter's existing tool. <span class="hl">Cut manual review ~80%.</span></p>`),
+F('air','Retry/backoff + change-detection guardrails',
+ ['Resilience','Idempotency','Cost guardrail'],
+ `<p><strong>What:</strong> exponential-backoff retries, token-limit guardrails, and the LLM only runs when input data changes.</p>
+  <p><strong>Why here:</strong> reliability plus no wasted tokens on unchanged records.</p>`),
+
+/* =========================================================
+   9) AWS DOCUMENT PIPELINE
+   ========================================================= */
+F('doc','AWS Textract (OCR)',
+ ['Optical character recognition','Document parsing','Text/table extraction'],
+ `<p><strong>What:</strong> extracts text, tables and form fields from documents and scans.</p>
+  <p><strong>Why here:</strong> turn unstructured PDFs/images into machine-readable data with no manual keying.</p>`),
+F('doc','AWS Comprehend (NER)',
+ ['Named-entity recognition','NLP service','Entity extraction'],
+ `<p><strong>What:</strong> pulls entities (names, dates, key values) out of the extracted text.</p>
+  <p><strong>Why here:</strong> structure raw text into the fields downstream systems need.</p>`),
+F('doc','API endpoints for integration',
+ ['Service API','Integration layer'],
+ `<p><strong>What:</strong> exposes the pipeline so existing business systems can call it.</p>
+  <p><strong>Why here:</strong> makes the OCR + NER usable as a reusable service. Category name: <span class="hl">Intelligent Document Processing (IDP)</span>.</p>`),
+
+/* =========================================================
+   10) ANESTHETIC RECOMMENDER
+   ========================================================= */
+F('anes','LangChain + OpenAI reasoning',
+ ['LLM reasoning','Recommendation engine','Decision support'],
+ `<p><strong>What:</strong> analyses a surgical case and recommends an anesthetist.</p>
+  <p><strong>Why here:</strong> automates a judgement that used to take hours — down to minutes.</p>`),
+F('anes','Twilio SMS + email dispatch',
+ ['Notification service','Alerting','Messaging integration'],
+ `<p><strong>What:</strong> sends the recommendation out by SMS (Twilio) and email.</p>
+  <p><strong>Why here:</strong> the right person is alerted automatically, not manually.</p>`),
+F('anes','Streamlit interface',
+ ['Data app','Rapid-prototype UI'],
+ `<p><strong>What:</strong> a simple UI to run case analysis and view recommendations.</p>
+  <p><strong>Why here:</strong> fast to build, easy for clinical staff to use.</p>`),
+F('anes','Built with Windsurf',
+ ['AI-assisted development','Agentic IDE'],
+ `<p><strong>What:</strong> developed using the Windsurf AI coding environment.</p>
+  <p><strong>Why here:</strong> shows fluency with modern AI-assisted development tooling.</p>`),
+
+/* =========================================================
+   11) GMAIL ASSISTANT EXTENSION
+   ========================================================= */
+F('gmail','Chrome extension (manifest + content scripts)',
+ ['Browser extension','Client-side agent','DOM automation'],
+ `<p><strong>What:</strong> a production-ready extension that runs inside Gmail via content scripts.</p>
+  <p><strong>Why here:</strong> shows you can ship <span class="hl">client-side</span> AI in the browser, not only cloud backends.</p>`),
+F('gmail','Email summarization',
+ ['LLM summarization','Condensation'],
+ `<p><strong>What:</strong> summarises long email threads.</p>
+  <p><strong>Why here:</strong> fast inbox triage — the first pass done for you.</p>`),
+F('gmail','Response drafting',
+ ['Generative drafting','Reply assistant'],
+ `<p><strong>What:</strong> drafts replies for the user to review and send.</p>
+  <p><strong>Why here:</strong> cuts the time to respond to routine mail.</p>`),
+F('gmail','Follow-up reminder system',
+ ['Scheduling','Reminders','Task nudging'],
+ `<p><strong>What:</strong> tracks messages that need a follow-up and reminds you.</p>
+  <p><strong>Why here:</strong> nothing important slips through the cracks.</p>`),
+F('gmail','Key-message highlighting',
+ ['Extraction','Highlighting','Salience detection'],
+ `<p><strong>What:</strong> highlights the important lines in an email.</p>
+  <p><strong>Why here:</strong> the eye jumps straight to what matters.</p>`),
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+{cat:'skill', q:'Cloud & AI/ML skills — headline list',
+ a:`<p><strong>Cloud/AI:</strong> AWS Bedrock, AWS ML, Lambda, EC2, S3, Textract, Comprehend, ECR, Cognito, IAM, API Gateway.</p>
+ <p><strong>GenAI:</strong> LangChain, LangGraph, LLMs, RAG, Agents, Conversational AI, Prompt Engineering, Semantic Search, Embedding pipelines.</p>
+ <p><strong>Vector DBs:</strong> Pinecone, DynamoDB, Qdrant, FAISS, ChromaDB, OpenSearch.</p>
+ <p><strong>One-liner:</strong> "I design and ship production AI on AWS — RAG, agents and serverless, secured and cost-tuned."</p>`},
+{cat:'skill', q:'Programming, backend & SaaS skills',
+ a:`<p><strong>Languages:</strong> Python, PHP, JavaScript, TypeScript, SQL.</p>
+ <p><strong>Backend/Frontend:</strong> FastAPI, Flask, Next.js, React, Streamlit, REST APIs, Webhooks, Microservices, Chrome Extensions, Twilio.</p>
+ <p><strong>SaaS blocks:</strong> Stripe (subscriptions/checkout/webhooks), multi-tenant workspaces, RBAC, JWT, rate limiting (slowapi), Pytest, React Query, Zustand, Tailwind.</p>
+ <p><strong>Databases:</strong> PostgreSQL, MySQL, Pinecone, DynamoDB, Airtable, Qdrant.</p>`},
+{cat:'skill', q:'DevOps, IaC & MLOps skills',
+ a:`<p><strong>DevOps/IaC:</strong> Terraform, Docker, Docker Compose, CI/CD (GitHub Actions), AWS ECR, CloudWatch.</p>
+ <p><strong>Disciplines:</strong> MLOps &amp; LLMOps, cost/latency optimization, observability, reproducible environments.</p>
+ <p><strong>AI-assisted dev:</strong> Claude Code, Windsurf.</p>
+ <p><strong>Say it:</strong> "reproducible AWS from a single command, tested and CI/CD-driven from day one."</p>`},
+{cat:'skill', q:'Certifications, education & languages',
+ a:`<p><strong>Certified:</strong> AWS Certified Machine Learning – <strong>Associate</strong>.</p>
+ <p><strong>In progress:</strong> AWS ML – Specialty; Microsoft Azure AI Fundamentals.</p>
+ <p><strong>Education:</strong> B.E. Computer Engineering (First Class), L.D. College of Engineering, Ahmedabad.</p>
+ <p><strong>Languages:</strong> English (fluent), Hindi (native), Gujarati (native) — an asset for multilingual AI products.</p>`},
+{cat:'skill', q:'Experience shape — how to frame 6+ / 2+ years',
+ a:`<p><strong>Summary line:</strong> "6+ years in software engineering, 2+ focused on AI/GenAI."</p>
+ <p><strong>Software base (2009–2015):</strong> PHP web apps (MXICODERS, Saprsh), then senior/lead on Magento e-commerce (Krish Technolabs) — architecture, mentoring, code reviews.</p>
+ <p><strong>AI focus (2024–present, Pragnakalp):</strong> MeetingMind AI, WhatsApp healthcare assistant, Bedrock/LangChain support assistants, RAG systems (+90% retrieval accuracy), Lambda automations.</p>
+ <p class="hl">Frame the software base as the foundation that makes your AI production-ready.</p>`},
+
+/* =========================================================
+   INTERVIEW — ABOUT YOU
+   ========================================================= */
+{cat:'behavioral', q:'"Tell me about yourself."',
+ a:`<p><strong>Present → path → why-here (~50s):</strong> "I'm an AI/ML engineer with 6+ years in software and 2+ in GenAI, specialising in AWS-based LLM, RAG and serverless systems. Recently I built <strong>MeetingMind AI</strong>, a multi-tenant SaaS, and a serverless <strong>WhatsApp healthcare assistant</strong> with LangGraph routing. I'm AWS ML–Associate certified and I care about AI that's secure, observable and cheap at scale. I'm looking to own production AI end-to-end."</p>`},
+{cat:'behavioral', q:'"Why move from web development into AI/ML?"',
+ a:`<p>"My software foundation — PHP, JS, databases, shipping real products — is exactly what production AI needs. AI without engineering discipline stays a demo. When LLMs matured I leaned in: RAG, agents, Bedrock, LangChain. My edge is that I build the tested, billable, deployable system around the model, not just an API call."</p>
+ <p class="hl">Frame the past as an asset, not a detour.</p>`},
+{cat:'behavioral', q:'"There\'s a gap in your timeline — what happened?"',
+ a:`<p>Your dated roles run to <strong>Mar 2015</strong>, then Pragnakalp starts <strong>Jun 2024</strong>. Expect this — prepare one calm, honest, specific answer.</p>
+ <p><strong>Template:</strong> "During that time I [family / relocation / freelance / break], and I used the later part to deliberately re-skill into AI — self-study, AWS certification, and the projects in my portfolio. I came back sharper and more focused."</p>
+ <p class="hl">Fill in the real reason, own it in a sentence or two, then pivot to what you built.</p>`},
+{cat:'behavioral', q:'"Walk me through your most challenging project."',
+ a:`<p><strong>Pick MeetingMind (STAR):</strong> Situation — a real billable SaaS, solo, end-to-end. Task — transcribe + summarise meetings cheaply and reliably. Action — pluggable LLM layer over 4 providers, a Redis-free Postgres queue, transcript caching, Stripe with Indian e-mandate. Result — ~87% lower summary cost, 90 passing tests, CI/CD to AWS.</p>
+ <p class="hl">Name one hard problem and the number you moved.</p>`},
+{cat:'behavioral', q:'"Tell me about a time you optimized cost."',
+ a:`<p>"On MeetingMind I added a <strong>SHA256 transcript cache</strong>, <strong>model tiering</strong> (Ollama in dev, Claude in prod) and chose Claude over GPT-4 for summaries — ~<strong>87%</strong> off summary cost, ~$1,300+/yr projected. On the RAG side I halved embedding dimensions for 2× faster, cheaper retrieval."</p>
+ <p class="hl">Keep two cost numbers ready.</p>`},
+{cat:'behavioral', q:'"Describe a difficult bug or failure you solved."',
+ a:`<p>Candidates: Qdrant <strong>read-timeout on 150K chunks</strong> → batch insertions; stale <strong>CloudFront cache</strong> after deploys → EventBridge→Lambda invalidation; state across <strong>stateless Lambdas</strong> → DynamoDB + TTL.</p>
+ <p class="hl">Structure: symptom → root cause → fix → prevention.</p>`},
+{cat:'behavioral', q:'"How do you keep up with such a fast-moving field?"',
+ a:`<p>"I learn by building — every new technique becomes a project. I follow AWS/Anthropic/OpenAI docs, I'm doing AWS ML–Specialty and Azure AI Fundamentals, and I use Claude Code and Windsurf daily. I prototype claims before trusting them in production."</p>`},
+{cat:'behavioral', q:'"Strengths and weaknesses?"',
+ a:`<p><strong>Strength:</strong> end-to-end ownership — idea → tested, deployed, billable product — with cost and security by default.</p>
+ <p><strong>Weakness (with fix):</strong> "I used to over-engineer for scale too early; now I ship the simplest thing that works — like a Postgres queue instead of Redis — and add complexity only when metrics demand it."</p>`},
+{cat:'behavioral', q:'"Why should we hire you?"',
+ a:`<p>"You need production AI, not prototypes. I've shipped serverless RAG, agent systems and a full SaaS with billing, tests and CI/CD — the unglamorous parts that make AI reliable. I'm AWS-certified, cost-aware and multilingual, and I own problems from architecture to deployment."</p>
+ <p class="hl">Mirror the JD's top need back at them.</p>`},
+{cat:'behavioral', q:'"What did the AWS ML certification teach you?"',
+ a:`<p>"Breadth — data engineering, model selection, deployment, security and cost across the AWS ML stack — and habits I now use: least-privilege IAM, choosing managed services (Bedrock, Transcribe, Comprehend) over reinventing, and designing for cost from the start. It's why my projects are Terraform-provisioned and observable."</p>`},
+{cat:'behavioral', q:'"What\'s it like building with Claude Code / AI tools?"',
+ a:`<p>"I built MeetingMind end-to-end with Claude Code. It accelerates scaffolding, tests and refactors, but judgement stays mine — architecture, trade-offs, security review, verifying every change. It's a fast pair-programmer, not an autopilot, and it changes how much one engineer can ship."</p>`},
+
+/* =========================================================
+   INTERVIEW — PROJECT DRILL (tagged to a project)
+   ========================================================= */
+{cat:'drill', proj:'mm', q:'"Why a PostgreSQL job queue instead of Redis / Celery / SQS?"',
+ a:`<p>"Fewer moving parts, lower cost, and Postgres was already in the stack. I built an <code>async_jobs</code> table with a polling worker that marks jobs running and records failure states — durable and transactional. The abstraction lets me swap in SQS/Redis later if throughput demands it."</p>
+ <p class="hl">Shows <span class="hl">pragmatic</span> right-sizing, not resume-driven design.</p>`},
+{cat:'drill', proj:'mm', q:'"Explain your pluggable LLM layer — what pattern is it?"',
+ a:`<p>"A <strong>Factory + Strategy</strong> pattern: <code>BaseLLMProvider</code> defines the interface; <code>LLMFactory</code> returns Ollama, Claude, GPT-4 or Bedrock from config. Business logic never knows which model it's calling — free local dev, cheap/high-quality prod, graceful fallback, zero code changes per environment."</p>`},
+{cat:'drill', proj:'mm', q:'"How did you cut summary cost ~87%?"',
+ a:`<p>Three levers: (1) <strong>SHA256 transcript cache</strong> — identical audio never re-transcribed; (2) <strong>model tiering</strong> — Ollama locally, paid models only in prod; (3) <strong>Claude over GPT-4</strong> for summaries at similar quality, lower price. ~87% off, ~$1,300+/yr.</p>`},
+{cat:'drill', proj:'wa', q:'"How do you keep conversation state in stateless Lambda?"',
+ a:`<p>"Each message is an independent stateless Lambda. I store context — intent, step, language — in <strong>DynamoDB</strong> keyed by user; each Lambda reads then updates it. <strong>TTL</strong> auto-expires idle sessions and processing is <span class="hl">idempotent</span> to avoid duplicate bookings."</p>`},
+{cat:'drill', proj:'wa', q:'"Why LangGraph, and how is routing kept safe?"',
+ a:`<p>"Healthcare can't have the LLM freelancing. LangGraph gives an explicit decision graph. I use <strong>deterministic keyword routing first</strong> with an <strong>LLM fallback</strong> only for ambiguity — so common intents are predictable and auditable, and the model only helps at the edges."</p>`},
+{cat:'drill', proj:'wa', q:'"How did you secure medical documents?"',
+ a:`<p>"Reports are processed in a <strong>sandboxed</strong> Lambda separate from chat handling. The raw file never reaches the LLM — only <strong>sanitised text</strong> does. Least-privilege IAM, separation of duties, explicit FAILED states. Compliance-aware from the start."</p>`},
+{cat:'drill', proj:'frag', q:'"How did you get +40% retrieval accuracy?"',
+ a:`<p>"Two changes over a baseline retriever: <strong>MultiQueryRetriever</strong> (~5 paraphrased variants) for recall, then a <strong>Cohere reranker</strong> to re-score so the most relevant chunks reach the context. Measured with RAGAS, not vibes."</p>`},
+{cat:'drill', proj:'frag', q:'"Why migrate Chroma → Qdrant, and why halve embeddings?"',
+ a:`<p>"Chroma was great for prototyping; I needed scalable cloud search with HNSW for ~150K chunks, so Qdrant. I hit read-timeouts and fixed them with <strong>batch insertions</strong>. I also cut embeddings 3072→1536 for <strong>2× faster</strong> retrieval and lower storage — a deliberate cost/latency trade-off, accuracy still validated."</p>`},
+{cat:'drill', proj:'cicd', q:'"Walk me through the static-site CI/CD pipeline."',
+ a:`<p>"Push to <code>main</code> → CodePipeline deploys to S3 → <strong>EventBridge</strong> catches <code>SUCCEEDED</code> → a <strong>Lambda</strong> invalidates CloudFront → the CDN serves fresh content globally in under a minute. GitHub connects via CodeStar (secret-free). Even the contact form is serverless: API Gateway → Lambda → SES."</p>`},
+{cat:'drill', proj:'air', q:'"Why compress Airtable data into JSON?"',
+ a:`<p>"Applicant data spanned several linked tables. A compression script collapses it to one JSON payload — fewer API calls, faster sync, lighter structure; a decompression script restores normalized tables for editing. The LLM evaluator only reruns on change, so I don't waste tokens."</p>`},
+{cat:'drill', proj:'mm', q:'"How does MeetingMind\'s request flow work end to end?"',
+ a:`<p>"Next.js → FastAPI over HTTPS with JWT, workspace-scoped by <code>X-Workspace-ID</code>. Upload → validate format → S3 → enqueue a Postgres job → worker transcribes (Whisper/Transcribe, cached) → LLM summarises into summary + action items + topics → saved, status flips to completed. Stripe meters and enforces limits throughout."</p>`},
+
+/* =========================================================
+   INTERVIEW — TECHNICAL (general)
+   ========================================================= */
+{cat:'technical', q:'"What is RAG and why use it over a plain LLM?"',
+ a:`<p>"A plain LLM answers from training data — it can't see private or fresh knowledge and will guess. <strong>RAG</strong> adds retrieval: embed the query, fetch relevant chunks from a vector store, feed them as context. Answers become grounded and <span class="hl">citable</span>, cutting hallucination, and knowledge updates without retraining."</p>`},
+{cat:'technical', q:'"RAG vs fine-tuning — when each?"',
+ a:`<p><strong>RAG</strong> = knowledge that changes or must be cited (cheap to update — re-index). <strong>Fine-tuning</strong> = behaviour/format/tone/domain style, not facts.</p>
+ <p class="hl">Trap: don't fine-tune to fix outdated facts — that's a retrieval problem.</p>`},
+{cat:'technical', q:'"Walk me through a RAG pipeline end to end."',
+ a:`<p><strong>Offline:</strong> documents → clean → chunk → embed → store in a vector DB.</p>
+ <p><strong>Online:</strong> query → embed → retrieve top-k → (optional) rerank → build prompt with context → LLM generates → answer with citations.</p>
+ <p>Wrap with evaluation (RAGAS), tracing and guardrails.</p>`},
+{cat:'technical', q:'"What is chunking, and how do you pick chunk size?"',
+ a:`<p>"Chunking splits documents so retrieval returns focused context. <strong>Too large</strong> → noisy, costly. <strong>Too small</strong> → meaning breaks across boundaries. I use a recursive splitter with overlap and tune to content + embedding cost; consider <span class="hl">semantic</span> or <span class="hl">parent-child</span> chunking when structure matters."</p>`},
+{cat:'technical', q:'"Bi-encoder vs cross-encoder — what\'s a reranker?"',
+ a:`<p>"A <strong>bi-encoder</strong> embeds query and docs separately — fast ANN search, weaker precision. A <strong>cross-encoder</strong> (the reranker) reads query + doc together — far more accurate but can't pre-compute, so you run it only on top-k. Two-stage: bi-encoder retrieves, cross-encoder reranks."</p>`},
+{cat:'technical', q:'"What are embeddings, and why do dimensions matter?"',
+ a:`<p>"Embeddings map text to vectors where semantic similarity ≈ closeness, so search matches meaning, not keywords. Higher dims capture more nuance but cost storage and slow ANN search. I cut 3072→1536 for 2× faster retrieval at acceptable accuracy."</p>`},
+{cat:'technical', q:'"How would you pick a vector database?"',
+ a:`<p><strong>Pinecone</strong> — fully managed, less ops. <strong>Qdrant</strong> — powerful filtering/HNSW, self-host or cloud. <strong>FAISS</strong> — a fast in-memory library, you manage persistence. <strong>Chroma</strong> — simple, great for prototyping.</p>
+ <p class="hl">"I prototype in Chroma/FAISS, then move to Qdrant or Pinecone for scale" — which I've done.</p>`},
+{cat:'technical', q:'"How do you reduce hallucinations?"',
+ a:`<p>Layered: <strong>RAG</strong> to ground answers; <strong>reranking</strong> so the right chunks arrive; prompts that say "answer only from context, else say you don't know"; <strong>citations</strong> for traceability; and <strong>RAGAS faithfulness</strong> to catch ungrounded output. Lower temperature for factual tasks.</p>`},
+{cat:'technical', q:'"What are guardrails in an LLM system?"',
+ a:`<p>"Controls that keep outputs safe and on-topic: input validation + prompt-injection defence, output/schema validation, allowed-topic routing, PII handling, refusal behaviour. In my healthcare bot, <strong>deterministic routing</strong> + <strong>sandboxed</strong> doc handling were guardrails — the LLM never touched raw files or critical paths unchecked."</p>`},
+{cat:'technical', q:'"What is an AI agent? Explain ReAct."',
+ a:`<p>"An <strong>agent</strong> is an LLM that plans and acts via tools in a loop, not one answer. <strong>ReAct</strong> interleaves <em>Reasoning</em> and <em>Acting</em>: think → call a tool → observe → think again, until done. It fixes chain-of-thought's flaw of hallucinating facts it should look up. My LangGraph routing is a controlled version."</p>`},
+{cat:'technical', q:'"When do you need an agent vs a fixed workflow?"',
+ a:`<p>"If steps are known, a <strong>deterministic workflow</strong> is cheaper, faster, more reliable — use it. Reach for an <strong>agent</strong> only when the path truly varies and needs dynamic tool choice. Agents fail in new ways — runaway tool calls, retrieval drift — so keep as much deterministic as possible."</p>`},
+{cat:'technical', q:'"How do you evaluate a RAG system?"',
+ a:`<p>Separate retrieval from generation. Retrieval: context recall/precision. Generation: <strong>faithfulness</strong> (grounded) + <strong>answer relevance</strong>. Tools: RAGAS + human review. In prod also track latency, cost/request and user feedback.</p>`},
+{cat:'technical', q:'"How do you control cost and latency at scale?"',
+ a:`<p>Levers: <strong>caching</strong> (retrieval, prompt/KV, response), <strong>model tiering</strong> (small model for easy queries), <strong>prompt compression</strong>, right-sized embeddings, <strong>streaming</strong> tokens, and batching. I've shipped caching + tiering to cut costs ~87%.</p>`},
+{cat:'technical', q:'"What is prompt caching / KV cache?"',
+ a:`<p>"The <strong>KV cache</strong> reuses computed attention keys/values during generation so past tokens aren't recomputed. <strong>Prompt caching</strong> stores the KV cache for a repeated prompt <em>prefix</em> on the server, so reused prefixes skip recomputation — big latency and input-token savings when many requests share a system prompt."</p>`},
+{cat:'technical', q:'"Trade-offs of serverless (Lambda)?"',
+ a:`<p><strong>Pros:</strong> scales to zero, pay-per-use, no server management. <strong>Cons:</strong> cold starts, time/memory limits, statelessness (externalise state — DynamoDB + TTL). I minimise cold starts with small packages and single-purpose functions; steady high load can be cheaper on containers/EC2."</p>`},
+{cat:'technical', q:'"What is idempotency and why does it matter?"',
+ a:`<p>"An idempotent operation has the same effect run once or many times. In at-least-once systems (webhooks, queues) messages duplicate. I make processing idempotent — check state before booking — so a retry never double-books or double-charges."</p>`},
+{cat:'technical', q:'"What is Terraform remote state + locking?"',
+ a:`<p>"Terraform tracks infra in a <strong>state file</strong>. I keep it in <strong>S3</strong> (shared, versioned) with a <strong>DynamoDB</strong> lock table so two applies can't corrupt it — what makes IaC safe for teams and CI/CD."</p>`},
+{cat:'technical', q:'"What is MCP (Model Context Protocol)?"',
+ a:`<p>"An open standard for connecting LLMs/agents to external tools and data through one consistent interface — a 'universal plug' so a model uses many tools without bespoke integrations. A 2025–26 hot topic in agentic systems; worth knowing even if a JD omits it."</p>`},
+{cat:'technical', q:'"Zero-shot vs few-shot vs chain-of-thought?"',
+ a:`<p><strong>Zero-shot:</strong> no examples. <strong>Few-shot:</strong> a few examples in the prompt to steer format. <strong>Chain-of-thought:</strong> ask for step-by-step reasoning to lift accuracy on multi-step problems. Combine few-shot + CoT for tricky reasoning; keep prompts lean for cost."</p>`},
+
+/* =========================================================
+   VOCABULARY BOOST
+   ========================================================= */
+{cat:'vocab', q:'Pragmatic',
+ a:`<p><strong>Meaning:</strong> practical and realistic rather than theoretical.</p>
+ <p><strong>Use:</strong> "I made a <strong>pragmatic</strong> choice to use a Postgres queue instead of Redis." <em>(reuse it — it signals maturity.)</em></p>`},
+{cat:'vocab', q:'Robust',
+ a:`<p><strong>Meaning:</strong> strong and reliable; copes with errors and load.</p>
+ <p><strong>Use:</strong> "a <strong>robust</strong> pipeline with retries and graceful failure." Pairs with <em>resilient</em>, <em>scalable</em>.</p>`},
+{cat:'vocab', q:'Orchestrate',
+ a:`<p><strong>Meaning:</strong> to coordinate several parts to work together.</p>
+ <p><strong>Use:</strong> "LangGraph <strong>orchestrates</strong> the agent's routing"; "I <strong>orchestrated</strong> transcription and LLM services behind one API."</p>`},
+{cat:'vocab', q:'Mitigate',
+ a:`<p><strong>Meaning:</strong> to reduce the severity of something bad.</p>
+ <p><strong>Use:</strong> "To <strong>mitigate</strong> hallucinations, I grounded answers with RAG and reranking."</p>`},
+{cat:'vocab', q:'Idempotent',
+ a:`<p><strong>Meaning:</strong> an operation that runs many times with the same effect as once.</p>
+ <p><strong>Use:</strong> "I made webhook processing <strong>idempotent</strong> to prevent duplicate bookings." Signals distributed-systems literacy.</p>`},
+{cat:'vocab', q:'Deterministic',
+ a:`<p><strong>Meaning:</strong> same input → same predictable output (not random).</p>
+ <p><strong>Use:</strong> "<strong>deterministic</strong> keyword routing with an LLM fallback." Contrast an LLM's <em>non-deterministic</em> output.</p>`},
+{cat:'vocab', q:'Granular',
+ a:`<p><strong>Meaning:</strong> detailed; broken into fine parts.</p>
+ <p><strong>Use:</strong> "Cognito gives <strong>granular</strong>, role-based permissions"; "granular cost tracking per request."</p>`},
+{cat:'vocab', q:'Leverage',
+ a:`<p><strong>Meaning:</strong> to use something to maximum advantage.</p>
+ <p><strong>Use:</strong> "I <strong>leverage</strong> managed AWS services rather than reinventing them." Use sparingly.</p>`},
+{cat:'vocab', q:'Streamline',
+ a:`<p><strong>Meaning:</strong> to make a process simpler and more efficient.</p>
+ <p><strong>Use:</strong> "the automation <strong>streamlined</strong> recruiter review, cutting effort 80%." Cousin of <em>optimize</em>.</p>`},
+{cat:'vocab', q:'Articulate (verb)',
+ a:`<p><strong>Meaning:</strong> to express an idea clearly and fluently.</p>
+ <p><strong>Use:</strong> "let me <strong>articulate</strong> the trade-off." Interviewers reward candidates who <strong>articulate</strong> reasoning.</p>`},
+{cat:'vocab', q:'Nuanced',
+ a:`<p><strong>Meaning:</strong> aware of subtle differences; not black-and-white.</p>
+ <p><strong>Use:</strong> "RAG vs fine-tuning is a <strong>nuanced</strong> choice — knowledge vs behaviour."</p>`},
+{cat:'vocab', q:'Provision',
+ a:`<p><strong>Meaning:</strong> to set up and configure infrastructure for use.</p>
+ <p><strong>Use:</strong> "I <strong>provision</strong> the whole AWS stack with Terraform in one command."</p>`},
+{cat:'vocab', q:'Salient',
+ a:`<p><strong>Meaning:</strong> most noticeable or important.</p>
+ <p><strong>Use:</strong> "the <strong>salient</strong> point is that it's billable and tested, not just a demo." Great for summaries.</p>`},
+{cat:'vocab', q:'Concise',
+ a:`<p><strong>Meaning:</strong> giving much information clearly in few words.</p>
+ <p><strong>Use:</strong> a goal for every answer — be <strong>concise</strong>. Interviewers value a <strong>concise</strong>, structured reply.</p>`},
+{cat:'vocab', q:'Resilient',
+ a:`<p><strong>Meaning:</strong> able to recover quickly from failure or load.</p>
+ <p><strong>Use:</strong> "a <strong>resilient</strong> system with retries, TTL cleanup and FAILED states." Reinforces <em>robust</em> from earlier.</p>`},
+{cat:'vocab', q:'Scalable',
+ a:`<p><strong>Meaning:</strong> able to handle growth in load without redesign.</p>
+ <p><strong>Use:</strong> "a <strong>scalable</strong>, serverless design that handles traffic spikes automatically." Pair with <em>robust</em> and <em>resilient</em>.</p>`},
+
+/* =========================================================
+   FULL PROJECT OVERVIEWS  (LAST — one per project)
+   ========================================================= */
+{cat:'project', proj:'mm', q:'MeetingMind AI — full project overview',
+ aka:['Meeting-intelligence platform','Full-stack GenAI SaaS','Multi-tenant SaaS product'],
+ a:`<p><strong>What:</strong> a production-grade multi-tenant SaaS turning meeting audio/video into transcripts, summaries, action items and topics, inside collaborative workspaces.</p>
+ <p><strong>Stack:</strong> async FastAPI + PostgreSQL 16 + SQLAlchemy 2.0, JWT + workspace RBAC, a Postgres job queue, a pluggable LLM layer (Ollama/Claude/GPT-4/Bedrock), Whisper + AWS Transcribe, Stripe, Next.js/React, Docker + GitHub Actions → ECR/EC2/RDS/S3.</p>
+ <p><strong>Why:</strong> a real billable product, not a demo — meetings become searchable intelligence.</p>
+ <p><strong>Hard problems:</strong> Redis-free durable queue; one interface over 4 LLMs + 2 transcription engines; Stripe INR/e-mandate; ~<strong>87%</strong> cost cut; 90 tests + CI/CD. Built end-to-end with Claude Code.</p>`},
+{cat:'project', proj:'wa', q:'WhatsApp Healthcare Assistant — full project overview',
+ aka:['Serverless conversational agent','Multilingual healthcare chatbot','Event-driven Lambda app'],
+ a:`<p><strong>What:</strong> a multilingual (EN/Gujarati) WhatsApp assistant for appointment booking, symptom-based doctor recommendation, medical Q&amp;A and secure report summarisation.</p>
+ <p><strong>Stack:</strong> AWS Lambda (stateless), DynamoDB + TTL state, LangGraph routing, RAG, WhatsApp Business API, event-driven async workflows.</p>
+ <p><strong>Why:</strong> 24/7 patient help with no app install; less front-desk load.</p>
+ <p><strong>Hard problems:</strong> state across stateless Lambdas (DynamoDB + TTL); <span class="hl">sandboxed</span> document processing; deterministic routing + LLM fallback; horizontal scalability.</p>`},
+{cat:'project', proj:'srag', q:'Serverless RAG Chatbot — full project overview',
+ aka:['Document-intelligence chatbot','Bedrock + Pinecone RAG','IaC-provisioned AI app'],
+ a:`<p><strong>What:</strong> a RAG chatbot giving accurate, context-aware answers over uploaded documents.</p>
+ <p><strong>Stack:</strong> AWS Bedrock + Pinecone, Cognito auth, API Gateway, Lambda, S3 + CloudFront, Secrets Manager — all provisioned with Terraform (remote state + DynamoDB lock).</p>
+ <p><strong>Why:</strong> answer grounded in a company's own documents, not the model's memory.</p>
+ <p><strong>Outcomes:</strong> ~80% faster than keyword search, ~90% accuracy lift vs a bare LLM, 99.9% availability, security aligned to SOC 2 / HIPAA / GDPR principles.</p>`},
+{cat:'project', proj:'frag', q:'Financial RAG System — full project overview',
+ aka:['Advanced RAG pipeline','RAGAS-evaluated RAG','Explainable AI dashboard'],
+ a:`<p><strong>What:</strong> a RAG engine answering analytical questions over Apple's financial statements (2019–2023), served via Streamlit with citations.</p>
+ <p><strong>Stack:</strong> LangChain, Qdrant (HNSW), OpenAI <code>text-embedding-3-large</code>, Cohere reranker, RAGAS. Languages EN/DE/FR/IT.</p>
+ <p><strong>Why:</strong> analysts need traceable answers, not black-box guesses.</p>
+ <p><strong>Hard problems:</strong> ~150K chunks (batch insertions fixed timeouts); <strong>+40%</strong> accuracy via MultiQuery + rerank; <strong>2×</strong> faster via 3072→1536 dims; Chroma→Qdrant migration; RAGAS validation.</p>`},
+{cat:'project', proj:'notes', q:'Serverless Notes App — full project overview',
+ aka:['Static SPA + serverless API','JAMstack app','Pay-per-use web app'],
+ a:`<p><strong>What:</strong> a secure note app — create, edit, search, tag, organise.</p>
+ <p><strong>Stack:</strong> S3 + CloudFront SPA; API Gateway → Lambda; Cognito; DynamoDB keyed <code>(userId, noteId)</code>.</p>
+ <p><strong>Why:</strong> a fast app with near-zero ops cost and automatic scaling.</p>
+ <p><strong>Outcomes:</strong> token auth validated at the gateway; per-user isolation; p95 &lt; 150 ms; &lt; $5/mo at low traffic; least-privilege IAM, CORS, sanitization.</p>`},
+{cat:'project', proj:'cicd', q:'Static Site CI/CD — full project overview',
+ aka:['Serverless deployment pipeline','GitOps deploy flow','Zero-touch hosting'],
+ a:`<p><strong>What:</strong> a fully automated GitHub → S3 → CloudFront pipeline with event-driven cache invalidation — 100% serverless CI/CD on the free tier.</p>
+ <p><strong>Stack:</strong> CodePipeline, S3, CloudFront, Lambda, EventBridge, CodeStar, API Gateway + SES.</p>
+ <p><strong>Why:</strong> push to <code>main</code> and the live site updates worldwide with zero manual steps.</p>
+ <p><strong>Hard problems:</strong> stale CDN cache (EventBridge→Lambda invalidation); secret-free GitHub via CodeStar; email from a static site via API Gateway + Lambda + SES. Deploy &lt; 1 min globally.</p>`},
+{cat:'project', proj:'wm', q:'WorkMail Signature Automation — full project overview',
+ aka:['Email middleware','Message-flow hook','Serverless mail processor'],
+ a:`<p><strong>What:</strong> a serverless system that auto-appends branded signatures to outgoing mail, chosen by sender/department.</p>
+ <p><strong>Stack:</strong> WorkMail flow rules → Lambda (Python 3.11, Message Flow API), S3 templates, IAM, CloudWatch, Terraform.</p>
+ <p><strong>Why:</strong> consistent branding + compliance with zero user effort.</p>
+ <p><strong>Hard problems:</strong> safely rewriting <span class="hl">multipart</span> HTML+text mail; graceful failure so mail still sends; update templates without redeploying; HTTPS-only S3, no hardcoded secrets.</p>`},
+{cat:'project', proj:'air', q:'Airtable Contractor System — full project overview',
+ aka:['Recruitment-intelligence system','Rules + LLM enrichment','No-code/low-code + AI'],
+ a:`<p><strong>What:</strong> an automated recruitment system — captures multi-form applicant data, compresses to JSON, auto-shortlists with rules, enriches with an LLM.</p>
+ <p><strong>Stack:</strong> Airtable (linked tables, forms, automations), Python, Gemini/OpenAI/Anthropic, rule-based scoring.</p>
+ <p><strong>Why:</strong> manual applicant review is slow and inconsistent.</p>
+ <p><strong>Hard problems:</strong> compression ↔ decompression scripts; a multi-factor rules engine; an LLM evaluator (summary, score, gaps, questions) with retry/backoff + change detection. <strong>Cut manual review ~80%.</strong></p>`},
+{cat:'project', proj:'doc', q:'AWS Document Pipeline — full project overview',
+ aka:['OCR + NER pipeline','Intelligent Document Processing (IDP)','Data-extraction API'],
+ a:`<p><strong>What:</strong> an automated pipeline that parses documents and extracts structured data for downstream systems.</p>
+ <p><strong>Stack:</strong> AWS Textract (OCR — text/tables/forms) + AWS Comprehend (NER), exposed via API endpoints.</p>
+ <p><strong>Why:</strong> turn unstructured PDFs/scans into clean data with no manual keying.</p>
+ <p><strong>Terms:</strong> OCR = optical character recognition; NER = named-entity recognition; category = Intelligent Document Processing (IDP).</p>`},
+{cat:'project', proj:'anes', q:'Anesthetic Recommender — full project overview',
+ aka:['Clinical decision-support tool','LLM recommendation engine','Streamlit AI app'],
+ a:`<p><strong>What:</strong> a medical assistant that recommends an anesthetist for a surgical case and dispatches it by email + Twilio SMS.</p>
+ <p><strong>Stack:</strong> Windsurf, LangChain, OpenAI, Twilio, email, Streamlit.</p>
+ <p><strong>Why:</strong> manual matching took hours; this cut it to minutes.</p>
+ <p><strong>Value:</strong> reliable case analysis → recommendation, plus a notification layer so the right person is alerted automatically.</p>`},
+{cat:'project', proj:'gmail', q:'Gmail Assistant Extension — full project overview',
+ aka:['Browser automation agent','Client-side AI assistant','Productivity extension'],
+ a:`<p><strong>What:</strong> a production-ready Chrome extension automating Gmail — summarisation, response drafting, follow-up reminders and key-message highlighting.</p>
+ <p><strong>Why:</strong> inbox triage is repetitive; the extension does the first pass.</p>
+ <p><strong>Talking point:</strong> shows you can ship <span class="hl">client-side / browser</span> AI (manifest, content scripts, DOM + an LLM call), not just cloud backends.</p>`},
+];
+
+/* ============================================================
+   APP
+   ============================================================ */
+const store=(()=>{ let mem={},ok=true;
+  try{const k='__ra';localStorage.setItem(k,'1');localStorage.removeItem(k);}catch(e){ok=false;}
+  return {get(k){try{return ok?localStorage.getItem(k):mem[k];}catch(e){return mem[k];}},
+          set(k,v){try{ok?localStorage.setItem(k,v):(mem[k]=v);}catch(e){mem[k]=v;}}};})();
+CARDS.forEach((c,i)=>c.id='c'+i);
+let progress=JSON.parse(store.get('ra_progress2')||'{}');
+const saveProgress=()=>store.set('ra_progress2',JSON.stringify(progress));
+
+let activeType='all', activeProj='all', query='', mode='browse';
+let flashList=[], flashIdx=0, reviewOnly=false;
+const $=s=>document.querySelector(s);
+const gridEl=$('#grid');
+
+/* filters */
+function buildFilters(){
+  const tc={}; CARDS.forEach(c=>tc[c.cat]=(tc[c.cat]||0)+1);
+  const tItems=[['all','All',null,CARDS.length]];
+  Object.keys(CAT).forEach(k=>tItems.push([k,CAT[k].name,CAT[k].c,tc[k]||0]));
+  $('#typeFilters').innerHTML=tItems.map(([k,n,c,ct])=>
+    `<button class="filt ${k==='all'?'on':''}" data-t="${k}" style="--c:${c||'#4d8dff'}"><span class="dot"></span>${n}<span class="ct">${ct}</span></button>`).join('');
+  const pc={}; CARDS.forEach(c=>{if(c.proj)pc[c.proj]=(pc[c.proj]||0)+1;});
+  const pItems=[['all','All projects',null,'']];
+  Object.keys(PROJ).forEach(k=>pItems.push([k,PROJ[k].short,PROJ[k].c,pc[k]||0]));
+  $('#projFilters').innerHTML=pItems.map(([k,n,c,ct])=>
+    `<button class="filt ${k==='all'?'on':''}" data-p="${k}" style="--c:${c||'#4d8dff'}"><span class="dot"></span>${n}${ct!==''?`<span class="ct">${ct}</span>`:''}</button>`).join('');
+  $('#typeFilters').querySelectorAll('.filt').forEach(b=>b.onclick=()=>{
+    activeType=b.dataset.t; $('#typeFilters').querySelectorAll('.filt').forEach(x=>x.classList.toggle('on',x===b)); refresh();});
+  $('#projFilters').querySelectorAll('.filt').forEach(b=>b.onclick=()=>{
+    activeProj=b.dataset.p; $('#projFilters').querySelectorAll('.filt').forEach(x=>x.classList.toggle('on',x===b)); refresh();});
+}
+function match(c){
+  if(activeType!=='all'&&c.cat!==activeType)return false;
+  if(activeProj!=='all'&&c.proj!==activeProj)return false;
+  if(!query)return true;
+  const hay=(c.q+' '+c.a+' '+(c.aka||[]).join(' ')+' '+CAT[c.cat].name+' '+(c.proj?PROJ[c.proj].name:'')).toLowerCase();
+  return query.toLowerCase().split(/\s+/).every(w=>hay.includes(w));
+}
+const filtered=()=>CARDS.filter(match);
+
+function renderStats(){
+  const total=CARDS.length;
+  const known=Object.values(progress).filter(v=>v==='known').length;
+  const rev=Object.values(progress).filter(v=>v==='review').length;
+  $('#stats').innerHTML=
+    `<div class="chip-stat"><span class="n">${total}</span><span class="l">Cards</span></div>
+     <div class="chip-stat k"><span class="n">${known}</span><span class="l">Known</span></div>
+     <div class="chip-stat r"><span class="n">${rev}</span><span class="l">To review</span></div>
+     <div class="chip-stat"><span class="n">${Object.keys(PROJ).length}</span><span class="l">Projects</span></div>`;
+  $('#foot').textContent=known+'/'+total+' known · '+rev+' flagged';
+}
+function akaHTML(c){ if(!c.aka||!c.aka.length)return '';
+  return `<div class="aka"><span class="lbl">Also called</span>`+c.aka.map(t=>`<span class="t">${t}</span>`).join('')+`</div>`; }
+
+function cardHTML(c){
+  const st=progress[c.id];
+  const cc=CAT[c.cat].c;
+  const stripe=c.proj?PROJ[c.proj].c:cc;
+  const pcol=c.proj?PROJ[c.proj].c:cc;
+  return `<article class="card ${st==='known'?'known':st==='review'?'rev':''}" style="--c:${stripe};--cc:${cc}" data-id="${c.id}">
+    <div class="pad">
+      <div class="catrow">
+        <div class="badges">
+          <span class="cat">${CAT[c.cat].name}</span>
+          ${c.proj?`<span class="pbadge" style="--c:${pcol}">${PROJ[c.proj].short}</span>`:''}
+        </div>
+        ${st?`<span class="stateflag ${st==='known'?'known':'rev'}">${st==='known'?'Known':'Review'}</span>`:''}
+      </div>
+      <span class="q">${c.q}</span>
+      ${akaHTML(c)}
+      <div class="tapcue">Tap to reveal <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></div>
+    </div>
+    <div class="answer"><div class="inner">${c.a}</div>
+      <div class="rate">
+        <button class="pk-r ${st==='review'?'act':''}" data-act="review">◐ Need review</button>
+        <button class="pk-k ${st==='known'?'act':''}" data-act="known">✓ I know this</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function render(){
+  renderStats();
+  const list=filtered();
+  if(!list.length){ gridEl.innerHTML=`<div class="empty">No cards match. Try another word or clear a filter.</div>`; return; }
+  // group headers only when viewing "All projects" & a per-project section exists; show a header when project changes
+  let html=''; let lastProj='__none__';
+  const showHeaders = (activeProj==='all');
+  list.forEach(c=>{
+    if(showHeaders && c.proj && c.proj!==lastProj){
+      const p=PROJ[c.proj];
+      const n=list.filter(x=>x.proj===c.proj).length;
+      html+=`<div class="projhead" style="--c:${p.c}"><span class="bar"></span><h2>${p.name}</h2><span class="cnt">${n} cards</span></div>`;
+      lastProj=c.proj;
+    }
+    if(showHeaders && !c.proj && lastProj!=='__flat__'){
+      // once we hit projectless cards (skills/interview/vocab), stop grouping
+      lastProj='__flat__';
+    }
+    html+=cardHTML(c);
+  });
+  gridEl.innerHTML=html;
+  gridEl.querySelectorAll('.card').forEach(card=>{
+    const id=card.dataset.id;
+    card.querySelector('.pad').onclick=()=>card.classList.toggle('open');
+    card.querySelectorAll('.rate button').forEach(btn=>btn.onclick=e=>{
+      e.stopPropagation(); const act=btn.dataset.act;
+      progress[id]=(progress[id]===act)?undefined:act; if(!progress[id])delete progress[id];
+      saveProgress(); render();
+      setTimeout(()=>{const el=gridEl.querySelector(`[data-id="${id}"]`); if(el)el.classList.add('open');},0);
+    });
+  });
+}
+
+/* flashcards */
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+function buildFlashList(){ let l=filtered(); if(reviewOnly)l=l.filter(c=>progress[c.id]==='review'); flashList=l; flashIdx=0; }
+function renderFlash(){
+  const fw=$('#flashwrap');
+  if(!flashList.length){ $('#flashcard').style.display='none'; $('.flashnav').style.display='none';
+    $('#progpos').textContent='';$('#progcat').textContent='';$('#progbar').style.width='0%';
+    if(!fw.querySelector('.empty'))fw.insertAdjacentHTML('beforeend',`<div class="empty">Nothing here — clear the Review pile filter or mark some cards.</div>`); return; }
+  const ex=fw.querySelector('.empty'); if(ex)ex.remove();
+  $('#flashcard').style.display='flex'; $('.flashnav').style.display='flex';
+  flashIdx=(flashIdx+flashList.length)%flashList.length;
+  const c=flashList[flashIdx]; const fc=$('#flashcard'); fc.classList.remove('reveal');
+  const stripe=c.proj?PROJ[c.proj].c:CAT[c.cat].c;
+  fc.style.setProperty('--c',stripe);
+  $('#fcat').textContent=CAT[c.cat].name; $('#fcat').style.color=CAT[c.cat].c;
+  $('#fpline').textContent=c.proj?PROJ[c.proj].name:'';
+  $('#fq').innerHTML=c.q; $('#fa').innerHTML=c.a+akaHTML(c);
+  $('#progpos').textContent='Card '+(flashIdx+1)+' / '+flashList.length;
+  const st=progress[c.id]; $('#progcat').textContent=st?(st==='known'?'✓ known':'◐ review'):'—';
+  $('#progbar').style.width=((flashIdx+1)/flashList.length*100)+'%';
+}
+function advance(mark){ const c=flashList[flashIdx]; if(mark){progress[c.id]=mark;saveProgress();}
+  flashIdx++; renderFlash(); renderStats(); window.scrollTo({top:$('#flashwrap').offsetTop-10,behavior:'smooth'}); }
+
+function refresh(){ if(mode==='flash'){buildFlashList();renderFlash();} else render(); updateFilterBadge(); }
+function setMode(m){ mode=m;
+  $('#mBrowse').classList.toggle('on',m==='browse'); $('#mFlash').classList.toggle('on',m==='flash');
+  gridEl.style.display=m==='browse'?'grid':'none';
+  const fw=$('#flashwrap'); fw.classList.toggle('on',m==='flash'); fw.setAttribute('aria-hidden',m==='flash'?'false':'true');
+  refresh();
+}
+$('#q').addEventListener('input',e=>{query=e.target.value.trim();refresh();});
+$('#mBrowse').onclick=()=>setMode('browse');
+$('#mFlash').onclick=()=>setMode('flash');
+$('#revealbtn').onclick=()=>$('#flashcard').classList.add('reveal');
+$('#flashcard').onclick=e=>{if(e.target.id!=='revealbtn')$('#flashcard').classList.add('reveal');};
+$('#navKnown').onclick=()=>advance('known');
+$('#navReview').onclick=()=>advance('review');
+$('#navSkip').onclick=()=>advance(null);
+$('#shuffle').onclick=()=>{buildFlashList();shuffle(flashList);flashIdx=0;renderFlash();};
+$('#reviewOnly').onclick=()=>{reviewOnly=!reviewOnly;$('#reviewOnly').style.color=reviewOnly?'var(--review)':'';buildFlashList();renderFlash();};
+document.addEventListener('keydown',e=>{ if(mode!=='flash')return;
+  if(e.key===' '){e.preventDefault();$('#flashcard').classList.add('reveal');}
+  if(e.key==='ArrowRight')advance(null);
+  if(e.key.toLowerCase()==='k')advance('known');
+  if(e.key.toLowerCase()==='r')advance('review'); });
+
+buildFilters(); render();
+
+/* ---- collapsible filters: keep the sticky bar short so cards stay visible ---- */
+const _ft=document.getElementById('filterToggle');
+function updateFilterBadge(){ const n=(activeType!=='all'?1:0)+(activeProj!=='all'?1:0);
+  const el=_ft&&_ft.querySelector('.fcount'); if(el) el.textContent=n?n:''; }
+function setFiltersCollapsed(v){
+  document.querySelectorAll('.filterblock').forEach(b=>b.classList.toggle('hide',v));
+  _ft.classList.toggle('on',!v); _ft.setAttribute('aria-expanded',String(!v));
+  try{ store.set('ra_filt_collapsed', v?'1':'0'); }catch(e){}
+}
+_ft.onclick=()=>{ const collapsed=document.querySelector('.filterblock').classList.contains('hide'); setFiltersCollapsed(!collapsed); };
+let _fc=store.get('ra_filt_collapsed');
+if(_fc===null||_fc===undefined) _fc=(window.innerWidth<=720)?'1':'0';
+setFiltersCollapsed(_fc==='1'); updateFilterBadge();
+
+/* ---------------------------------------------------------
+   OPTIONAL PASSPHRASE LOCK
+   To turn it ON: set PASSPHRASE below to a word, e.g. "varsha2026".
+   Leave it as "" to keep the deck open (no lock).
+   Note: this is a light client-side gate to keep casual eyes out —
+   it is NOT strong security. For true privacy, keep the file unpublished
+   or use a host with real password protection.
+--------------------------------------------------------- */
+const PASSPHRASE = "";
+(function(){
+  if(!PASSPHRASE) return;
+  const g=document.getElementById('gate');
+  try{ if(sessionStorage.getItem('ra_unlocked')==='1') return; }catch(e){}
+  g.classList.add('on'); g.setAttribute('aria-hidden','false');
+  const inp=document.getElementById('gateInput'),
+        btn=document.getElementById('gateBtn'),
+        err=document.getElementById('gateErr');
+  function tryUnlock(){
+    if(inp.value===PASSPHRASE){
+      try{ sessionStorage.setItem('ra_unlocked','1'); }catch(e){}
+      g.classList.remove('on'); g.setAttribute('aria-hidden','true');
+    } else { err.textContent='Wrong passphrase — try again.'; inp.value=''; inp.focus(); }
+  }
+  btn.onclick=tryUnlock;
+  inp.addEventListener('keydown',e=>{ if(e.key==='Enter') tryUnlock(); });
+  inp.focus();
+})();
+</script>
+</body>
+</html>
